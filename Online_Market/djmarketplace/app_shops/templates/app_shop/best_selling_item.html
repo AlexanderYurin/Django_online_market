@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}  {{ shops.title }}
+        {% endblock %}
+
+{% block body %}
+    <form method="get">
+        {% csrf_token %}
+
+        {{ form.date }}
+
+        <button type="submit">Search</button>
+    </form>
+    {% if order %}
+    Top 10 Products<br>
+    {% for item in order %}
+        {{ item.title }} : Bought: {{ item.quantity_sum }}<br>
+    {% endfor %}
+    {% else %}
+    There were no orders
+    {% endif %}
+{% endblock %}

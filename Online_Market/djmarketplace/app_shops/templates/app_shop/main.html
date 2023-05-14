@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Main
+        {% endblock %}
+
+{% block body %}
+<h1>All Shops </h1><br>
+        {% if shops %}
+        <ul>
+            {% for s in shops %}
+            <li><b>{{ s.title }} |
+                Category:
+                {% for c in s.category.all %}
+                {{ c.title }}
+                {% endfor %}</b><br>
+                {{ s.description|truncatewords:15 }}
+                <br><a href="{% url   'goods' s.pk %}"><button> More </button></a><br><br>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No shops</p>
+        {% endif %}
+{% endblock %}

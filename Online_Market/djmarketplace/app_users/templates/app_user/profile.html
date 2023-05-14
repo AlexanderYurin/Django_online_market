@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %} Personal Area
+        {% endblock %}
+
+{% block body %}
+
+<h2>Personal Area</h2><br>
+    Status = {{ request.user.profile.get_status  }}<br>
+    Name {{ request.user.profile.first_name }}<br>
+    Surname: {{ request.user.profile.last_name }}<br>
+    Balance: {{ request.user.profile.balance }} rub.
+
+    <a href="{% url 'balance' %}"><button type="submit">Top up</button> </a><br>
+
+    Order history: <br>
+    {% if  order %}
+        {% for g in order %}
+            {{ g.id }}. {{ g.good.title }} - ${{ g.get_cost }} / {{ g.created_at }} <br>
+        {% endfor %}
+    {% else %}
+        No orders
+    {% endif %}
+
+
+
+{% endblock %}

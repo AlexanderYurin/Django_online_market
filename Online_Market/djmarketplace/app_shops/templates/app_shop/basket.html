@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Basket
+        {% endblock %}
+
+{% block body %}
+
+<h2>Basket</h2><br>
+    {% if  basket %}
+        {% for b in basket %}
+            {{ b.good.title }}: {{ b.quantity }} * {{ b.good.price }} = {{ sum_good }} <br>
+        {% endfor %}
+    {% else %}
+        Cart is empty
+    {% endif %}
+
+
+
+{% endblock %}

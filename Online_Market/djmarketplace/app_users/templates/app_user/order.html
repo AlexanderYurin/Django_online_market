@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Checkout
+        {% endblock %}
+
+{% block body %}
+
+        {% if quantity %}
+            Not enough goods {{ good }}
+
+        {% elif money %}
+            Not enough money: {{ money }} <a href="{% url 'balance' %}"><button type="submit">Top up</button> </a><br>
+        {% else %}
+
+    <h1>Thank you</h1>
+    <p>Your order has been successfully completed.</p>
+
+    {% endif %}
+
+ {% endblock %}
